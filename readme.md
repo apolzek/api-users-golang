@@ -34,3 +34,8 @@ run migrations down:
 ```bash
   make migrate_down
 ```
+
+install swaggo
+```bash
+go get -u github.com/swaggo/swag
+```
