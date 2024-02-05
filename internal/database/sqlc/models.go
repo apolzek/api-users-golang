@@ -5,8 +5,46 @@
 package sqlc
 
 import (
+	"database/sql"
 	"time"
 )
+
+type Address struct {
+	ID         string
+	Cep        string
+	Ibge       string
+	Uf         string
+	City       string
+	Complement sql.NullString
+	Street     string
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
+	UserID     string
+}
+
+type Category struct {
+	ID        string
+	Title     string
+	CreatedAt time.Time
+	UpdatedAt time.Time
+}
+
+type Product struct {
+	ID          string
+	Title       string
+	Price       int32
+	Description sql.NullString
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
+}
+
+type ProductCategory struct {
+	ID         string
+	ProductID  string
+	CategoryID string
+	CreatedAt  time.Time
+	UpdatedAt  time.Time
+}
 
 type User struct {
 	ID        string

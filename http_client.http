@@ -1,69 +1,120 @@
 
 ## CreateUser
+
 POST http://localhost:8080/user HTTP/1.1
 content-type: application/json
 
 {
   "name": "John Doe",
-  "email": "john.doe@email.com",
+  "email": "john.doe2@email.com",
   "password": "12345678@",
   "cep": "01153000"
 }
-
 ###
 
 ## UpdateUser
 PATCH http://localhost:8080/user HTTP/1.1
 content-type: application/json
-Authorization: Bearer jwt_token
+Authorization: Bearer {{token}}
 
 {
   "name": "John Doe",
-  "email": "john.doe@email.com",
-  "cep": "00000000"
+  "email": "john.doe2s@email.com",
+  "cep": "88132243"
 }
-
 ###
 
 ## GetUserByID
 GET http://localhost:8080/user HTTP/1.1
 content-type: application/json
-Authorization: Bearer jwt_token
-
+Authorization: Bearer {{token}}
 ###
 
 ## DeleteUser
 DELETE http://localhost:8080/user HTTP/1.1
 content-type: application/json
-Authorization: Bearer jwt_token
-
-###
+Authorization: Bearer {{token}}
+####
 
 ## FindManyUsers
 GET http://localhost:8080/user/list-all HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG4uZG9lQGVtYWlsLmNvbSIsImV4cCI6MTcwNDQyOTE2NSwiaWQiOiIxIiwibmFtZSI6IkpvaG4ifQ.lTFzOEh7RSVdEoM3WnWvlY4KeQq2G8cDMdluYovOQGs
-
+Authorization: Bearer {{token}}
 ###
 
 ## UpdateUserPassword
 PATCH http://localhost:8080/user/password HTTP/1.1
 content-type: application/json
-Authorization: Bearer jwt_token
+Authorization: Bearer {{token}}
 
 {
-  "password": "12345678@",
+  "password": "123456789@",
   "old_password": "12345678@"
 }
-
-
 ###
 
 ## Login
+# @name login
 POST http://localhost:8080/auth/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "john.doe@email.com",
+  "email": "john.doe2@email.com",
   "password": "12345678@"
+}
+###
+@token = {{login.response.body.access_token}}
+
+### Categories
+
+## CreateCategory
+POST http://localhost:8080/category HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Samsung"
+}
+
+### Products
+
+## CreateProduct
+POST http://localhost:8080/product HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Samsung",
+  "description": "wewewe",
+  "categories": [],
+  "price": 39900
+}
+
+###
+
+## UpdateProduct
+PATCH http://localhost:8080/product/37545729-e891-40b5-946c-8e7d55bd686b HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "categories": ["07145e70-2a8e-4f71-9165-f0d450afa524"]
+}
+
+###
+
+## DeleteProduct
+DELETE http://localhost:8080/product/f720e1ce-cb88-4f72-a765-0250c1a525e3 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+## FindManyProducts
+GET http://localhost:8080/product HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "categories": ["ee78a1ab-c441-4c67-8b62-74fa16797ace"]
 }
