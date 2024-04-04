@@ -43,3 +43,8 @@ install swaggo
 ```bash
 go get -u github.com/swaggo/swag
 ```
+
+run tests
+```
+go test -v ./...
+```

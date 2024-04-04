@@ -5,9 +5,9 @@ POST http://localhost:8080/user HTTP/1.1
 content-type: application/json
 
 {
-  "name": "John Doe",
-  "email": "john.doe2@email.com",
-  "password": "12345678@",
+  "name": "John Doe Harrison",
+  "email": "john.doe@email.com",
+  "password": "12345678@!",
   "cep": "01153000"
 }
 ###
@@ -75,6 +75,14 @@ Authorization: Bearer {{token}}
 {
   "title": "Samsung"
 }
+###
+
+## FindManyCategories
+GET http://localhost:8080/categories HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+###
 
 ### Products
 
@@ -86,7 +94,7 @@ Authorization: Bearer {{token}}
 {
   "title": "Samsung",
   "description": "wewewe",
-  "categories": [],
+  "categories": ["Samsung"],
   "price": 39900
 }
 
