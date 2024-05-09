@@ -1,16 +1,27 @@
 
 ## CreateUser
-
 POST http://localhost:8080/user HTTP/1.1
 content-type: application/json
 
 {
-  "name": "John Doe Harrison",
-  "email": "john.doe@email.com",
-  "password": "12345678@!",
+  "name": "Vini Batista",
+  "email": "vini@email.com",
+  "password": "pass@123",
   "cep": "01153000"
 }
 ###
+
+## Login
+# @name login
+POST http://localhost:8080/auth/login HTTP/1.1
+content-type: application/json
+
+{
+  "email": "vini@email.com",
+  "password": "pass@123"
+}
+###
+@token = {{login.response.body.access_token}}
 
 ## UpdateUser
 PATCH http://localhost:8080/user HTTP/1.1
@@ -18,8 +29,8 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "name": "John Doe",
-  "email": "john.doe2s@email.com",
+  "name": "Vini Gomes",
+  "email": "vinig@email.com",
   "cep": "88132243"
 }
 ###
@@ -53,18 +64,6 @@ Authorization: Bearer {{token}}
 }
 ###
 
-## Login
-# @name login
-POST http://localhost:8080/auth/login HTTP/1.1
-content-type: application/json
-
-{
-  "email": "john.doe2@email.com",
-  "password": "12345678@"
-}
-###
-@token = {{login.response.body.access_token}}
-
 ### Categories
 
 ## CreateCategory
@@ -78,11 +77,11 @@ Authorization: Bearer {{token}}
 ###
 
 ## FindManyCategories
+# @name find_categories
 GET http://localhost:8080/categories HTTP/1.1
 content-type: application/json
-Authorization: Bearer {{token}}
-
-###
+# Authorization: Bearer {{token}}
+@category = {{find_categories.response.body.categories.[0].id}}
 
 ### Products
 
@@ -94,10 +93,9 @@ Authorization: Bearer {{token}}
 {
   "title": "Samsung",
   "description": "wewewe",
-  "categories": ["Samsung"],
+  "categories": ["{{category}}"],
   "price": 39900
 }
-
 ###
 
 ## UpdateProduct
@@ -108,14 +106,12 @@ Authorization: Bearer {{token}}
 {
   "categories": ["07145e70-2a8e-4f71-9165-f0d450afa524"]
 }
-
 ###
 
 ## DeleteProduct
 DELETE http://localhost:8080/product/f720e1ce-cb88-4f72-a765-0250c1a525e3 HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
-
 ###
 
 ## FindManyProducts
@@ -124,5 +120,5 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "categories": ["ee78a1ab-c441-4c67-8b62-74fa16797ace"]
+  "categories": ["{{category}}"]
 }
