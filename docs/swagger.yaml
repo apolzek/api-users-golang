@@ -135,9 +135,13 @@ definitions:
     type: object
   response.CategoryResponse:
     properties:
+      created_at:
+        type: string
       id:
         type: string
       title:
+        type: string
+      updated_at:
         type: string
     type: object
   response.ManyUsersResponse:
@@ -197,6 +201,36 @@ info:
   title: API users
   version: "1.0"
 paths:
+  /categories:
+    get:
+      consumes:
+      - application/json
+      description: Endpoint for search product
+      parameters:
+      - description: Search categories
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/dto.FindProductDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.ProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httperr.RestErr'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httperr.RestErr'
+      summary: Search categories
+      tags:
+      - categories
   /category:
     post:
       consumes:
@@ -222,6 +256,8 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/httperr.RestErr'
+      security:
+      - Bearer: []
       summary: Create new category
       tags:
       - category
@@ -496,4 +532,9 @@ paths:
       summary: Update user password
       tags:
       - user
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"

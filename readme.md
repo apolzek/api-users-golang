@@ -35,6 +35,11 @@ install swaggo
 go get -u github.com/swaggo/swag
 ```
 
+generate swagger
+```bash
+swag init -g internal/handler/routes/docs_route.go
+```
+
 run tests:
 ```bash
 go test -v ./...

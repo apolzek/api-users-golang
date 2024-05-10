@@ -17,7 +17,7 @@ POST http://localhost:8080/auth/login HTTP/1.1
 content-type: application/json
 
 {
-  "email": "vini@email.com",
+  "email": "vinig@email.com",
   "password": "pass@123"
 }
 ###
@@ -80,7 +80,7 @@ Authorization: Bearer {{token}}
 # @name find_categories
 GET http://localhost:8080/categories HTTP/1.1
 content-type: application/json
-# Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
 @category = {{find_categories.response.body.categories.[0].id}}
 
 ### Products

@@ -23,6 +23,8 @@ import (
 //	@Failure		400	{object}	httperr.RestErr
 //	@Failure		500	{object}	httperr.RestErr
 //	@Router			/category [post]
+//
+// @Security  Bearer
 func (h *handler) CreateCategory(w http.ResponseWriter, r *http.Request) {
 	var req dto.CreateCategoryDto
 
