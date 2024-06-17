@@ -18,7 +18,7 @@ content-type: application/json
 
 {
   "email": "vinig@email.com",
-  "password": "pass@123"
+  "password": "pass@1234"
 }
 ###
 @token = {{login.response.body.access_token}}
@@ -59,8 +59,8 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "password": "123456789@",
-  "old_password": "12345678@"
+  "password": "pass@1234",
+  "old_password": "pass@123"
 }
 ###
 
@@ -81,7 +81,12 @@ Authorization: Bearer {{token}}
 GET http://localhost:8080/categories HTTP/1.1
 content-type: application/json
 Authorization: Bearer {{token}}
-@category = {{find_categories.response.body.categories.[0].id}}
+
+###
+# O código abaixo salva o ID da primeira categoria encontrada na variável 'category_id'
+###
+@category_id = {{find_categories.response.body.categories.[0].id}}
+
 
 ### Products
 
@@ -93,7 +98,7 @@ Authorization: Bearer {{token}}
 {
   "title": "Samsung",
   "description": "wewewe",
-  "categories": ["{{category}}"],
+  "categories": ["{{category_id}}"],
   "price": 39900
 }
 ###
@@ -120,5 +125,5 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-  "categories": ["{{category}}"]
+  "categories": ["{{category_id}}"]
 }
