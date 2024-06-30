@@ -1,0 +1,536 @@
+{
+	"info": {
+		"_postman_id": "ca7049be-f433-4d7b-8d85-53b618099ab4",
+		"name": "api-users-golang",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11319918"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "9ff25db7-2870-4d9b-a6be-85dc385eff75"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"user@email.com\",\n  \"password\": \"pass@1234\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "7fee16f6-6944-4ece-bffc-650bd475a8cd"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"User Maximus\",\n    \"email\": \"user@email.com\",\n    \"password\": \"pass@123\",\n    \"cep\": \"01153000\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "70740c58-238a-418f-bbfa-33cb543676dc"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "2e276f55-7225-41f4-947e-534a6a354a17"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Vini Gomes\",\n    \"email\": \"vinicius@email.com\",\n    \"cep\": \"88132243\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "ab1d2b4b-8b56-4aac-8245-f18be87d0d64"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "d318b531-4978-48aa-b760-0e2e6ba1957f"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "960268fd-ba9f-45b4-a367-9537faf674b8"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "e7b88063-52ab-4c2a-998a-c0d5c51f5d8e"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/list-all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"list-all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "5a32cf04-f772-4fc1-b5ef-82ba24d8cdc1"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change password",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "f9ce1a22-c67e-45d3-bbfd-abae3e2e788e"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "463f0f26-eaec-45a6-98f7-7f199d7a9a45"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"password\": \"pass@1234\", \"old_password\": \"pass@123\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create category",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "4c4cb038-32fc-416a-bd9a-2f2aea31a322"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "77c17dcf-77a2-4137-8a52-7710944e6da5"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Samsung\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/category",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get categories",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "636e9081-7293-406b-921e-72183353618e"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "267f8a4f-aaf7-49f2-8677-77e195401a4b"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "feffe3f4-95f9-46f9-ac44-31fc9816786e"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "7a1ea6aa-792c-4be9-9ba3-9b2c97c9c544"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Samsung\",\n  \"description\": \"wewewe\",\n  \"categories\": [\n    \"05bb662b-abab-4dee-9f11-af0b1544c79e\"\n  ],\n  \"price\": 399\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "a80c820c-c49c-4d73-86d5-64da54baebef"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "03a0b8a0-ce98-4dbf-83c0-5c64b6688275"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"categories\": [\"191ecdb8-71fa-44de-a3b3-6d2dbeeea428\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "e43de516-c344-4f48-af60-4a4c7b96f8d4"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "5bbe5eb9-8367-41bb-a662-2c6f42ae57d0"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"categories\": [\n    \"07145e70-2a8e-4f71-9165-f0d450afa524\"\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product/05bb662b-abab-4dee-9f11-af0b1544c79e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"05bb662b-abab-4dee-9f11-af0b1544c79e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "b075d575-d58e-401e-8ed1-425de6e0c7fe"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "46324fa5-edf4-486f-917a-641ba5aedfdc"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/product/3a726838-520e-4206-8e4b-a6f60218d75d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product",
+						"3a726838-520e-4206-8e4b-a6f60218d75d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by categories",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"uuid": "0e691d2f-8c11-415b-87ec-45bf00b6817c"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer TOKEN_AQUI",
+						"uuid": "7f241575-20f4-4c01-b687-2e4522153fc3"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"categories\": [\"05bb662b-abab-4dee-9f11-af0b1544c79e\", \"0bf3363d-cc28-48d1-b4ea-18485e4c165f\"]}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{currentAccessToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const echoPostRequest = {",
+					"  url: 'http://localhost:8080/auth/login',",
+					"  method: 'POST',",
+					"  header: {",
+					"    'Content-Type': 'application/json',",
+					"",
+					"  },",
+					"  body: {",
+					"    mode: 'raw',",
+					"    raw: JSON.stringify({",
+					"      email: 'user@email.com',",
+					"      password: 'pass@1234'",
+					"    })",
+					"  }",
+					"};",
+					"",
+					"var getToken = true;",
+					"",
+					"if (!pm.environment.get('accessTokenExpiry') || ",
+					"    !pm.environment.get('currentAccessToken')) {",
+					"    console.log('Token or expiry date are missing');",
+					"} else if (pm.environment.get('accessTokenExpiry') <= (new Date()).getTime()) {",
+					"    console.log('Token is expired');",
+					"} else {",
+					"    getToken = false;",
+					"    console.log('Token and expiry date are all good');",
+					"}",
+					"",
+					"if (getToken === true) {",
+					"    pm.sendRequest(echoPostRequest, function (err, res) {",
+					"        console.log(err ? err : res.json());",
+					"        if (err === null) {",
+					"            console.log('Saving the token and expiry date');",
+					"            var responseJson = res.json();",
+					"            pm.environment.set('currentAccessToken', responseJson.access_token);",
+					"    ",
+					"            var expiryDate = new Date();",
+					"            expiryDate.setSeconds(expiryDate.getSeconds() + responseJson.expires_in);",
+					"            pm.environment.set('accessTokenExpiry', expiryDate.getTime());",
+					"        }",
+					"    });",
+					"}",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
